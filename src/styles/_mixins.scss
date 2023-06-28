@@ -1,0 +1,11 @@
+// Adding font
+@mixin font($font-face, $font-name, $font-weight, $font-style) {
+  @font-face {
+      font-family: $font-name;
+
+      src: url('../fonts/#{$font-face}.ttf') format('truetype');
+
+      font-weight: $font-weight;
+      font-style : $font-style;
+  }
+}

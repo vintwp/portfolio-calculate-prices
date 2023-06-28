@@ -1,7 +1,226 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@import "_reset";
+@import "_input-range";
 
 body {
-  background: $c-gray;
+  margin: 0;
+}
+
+[class*="__container"] {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0px 110px;
+  padding: 0 10px;
+}
+
+.volume-calculator {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 500px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  padding: 10px 20px;
+  gap: 10px;
+}
+
+.price-calc {
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  &__brand-body {
+    display: flex;
+    flex: 0 1 30%;
+    align-items: center;
+  }
+
+  &__title {
+    flex: 0 0 100%;
+  }
+}
+
+.comparison {
+  flex: 1 1 100%;
+  &__item {
+    display: flex;
+    align-items: center;
+    flex: 1 1 auto;
+    gap: 5px;
+  }
+
+  &__item:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  &__text-field {
+    flex: 0 0 85px;
+  }
+
+  &__title {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  &__logo {
+    position: relative;
+    flex: 0 0 7%;
+    min-height: 40px;
+    border-radius: 3px;
+  }
+  &__logo img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: contain;
+  }
+
+  &__logo-bg-violet {
+    background-color: #7b4092;
+  }
+
+  &__logo-bg-blue {
+    background-color: #3972db;
+  }
+
+  .progress-bar {
+    flex: 1 0 auto;
+  }
+}
+
+.progress-bar {
+  height: 15px;
+  position: relative;
+
+  &__inner {
+    height: 100%;
+    background-color: #706d6d;
+    border: 1px solid #000000;
+    position: relative;
+  }
+
+  &__price {
+    position: absolute;
+    // display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    content: "";
+    color: #000000;
+    font-size: 14px;
+    font-weight: 700;
+    top: 0;
+    right: -25px;
+  }
+}
+
+.storage-transfer {
+  flex: 1 1 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 5%;
+
+  &__body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__label {
+    flex: 0 0 auto;
+    font-size: 14px;
+  }
+
+  &__input-number {
+    flex: 0 0 auto;
+    position: relative;
+  }
+
+  &__input-number::after {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 3px;
+    font-size: 14px;
+    width: 20px;
+    height: 14px;
+    color: rgba(0, 0, 0, 0.6);
+    content: "GB";
+  }
+  input[type="number"] {
+    font-size: 14px;
+  }
+
+  input[type="range"] {
+    flex: 0 0 100%;
+  }
+
+  input[type="number"] {
+    width: 60px;
+    padding: 1px 22px 1px 2px;
+  }
+  input[type="range"] {
+    position: relative;
+  }
+
+  input[type="range"]::before,
+  input[type="range"]::after {
+    position: absolute;
+    content: "";
+    height: 24px;
+    width: 3px;
+    background: #000000;
+    transform: translate(0, -9px);
+  }
+  input[type="range"]::before {
+    top: -50%;
+    left: 0;
+  }
+
+  input[type="range"]::after {
+    top: -50%;
+    right: 0;
+  }
+}
+
+@media (min-width: 767.98px) {
+  .storage-transfer {
+    order: 5;
+  }
+
+  .comparison {
+    order: 2;
+    &__list {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__item {
+      gap: 5px;
+      min-height: 300px;
+      flex-direction: column-reverse;
+      margin: 0 !important;
+    }
+
+    &__logo {
+      min-height: 40px;
+      min-width: 40px;
+    }
+    .progress-bar {
+      width: 15px;
+      transform: rotate(180deg);
+    }
+
+    .progress-bar__inner {
+    }
+
+    .progress-bar__price {
+      // display: none;
+      transform: rotate(90deg);
+      top: calc(100% + 8px);
+      right: -3px;
+    }
+  }
 }
